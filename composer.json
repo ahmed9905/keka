@@ -1,0 +1,19 @@
+{
+    "name": "ahma/master",
+    "autoload":{
+        "files":[
+            "src/Pairs.php",
+            "src/Lists.php"
+        ]
+    },
+    "type": "site",
+    "authors": [
+        {
+            "name": "Ahma",
+            "email": "ahmed151p@mail.ru"
+        }
+    ],
+    "require": {
+        "tightenco/collect": "^5.6"
+    }
+}
