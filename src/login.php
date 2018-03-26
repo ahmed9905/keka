@@ -1,5 +1,6 @@
 <?php
 namespace Master\login;
+require_once "src\conectbd.php";
 function generateCode($length=6) {
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789";
     $code = "";
@@ -25,17 +26,16 @@ function generateCode($length=6) {
   			header("Location: src/check.php"); 
   			exit();
   		}else{
-  			echo "Вы ввели неправильный логин/пароль";
+  			$errLogin = "Вы ввели неправильный логин/пароль";
   		}
   	}else{
-  		echo "Не найден пользователь";
+  		$errLogin = "Не найден пользователь";
   	}
 
   }
-require_once "src\conectbd.php";
-?>
-<form method="POST">
-Логин <input name="login" type="text" required><br>
-Пароль <input name="password" type="password" required><br>
-<input name="aut" type="submit" value="Войти">
-</form>
+  if(isset($_POST['autExit'])){
+    setcookie('id',"",time()-30*30*30*12,"/");
+    setcookie('hash',"",time()-30*30*30*12,"/");
+    header("Location: index.php"); 
+  }
+

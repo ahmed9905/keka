@@ -35,11 +35,3 @@ if(isset($_POST['register']))
     }
 }
 
-?>
-
-<form method="POST">
-	Логин <input type="text" name="login"><br>
-	Имя <input type="text" name="name"><br>
-	Пароль <input type="password" name="password"><br>
-	<input type="submit" name="register" value = "Зарегистрироваться"><br>
-</form>

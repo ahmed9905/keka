@@ -14,8 +14,7 @@
 			setcookie('hash',"",time()-30*30*30*12,"/");
 			echo "что-то пошло не так";
 		}else{
-			echo "Привет {$user['Name']}";
-			$_SESSION['user'] = 1;
+			header("Location: /index.php"); 
 		}
 	}else{
 		echo "куки не работают";
