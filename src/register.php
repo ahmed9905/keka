@@ -33,7 +33,6 @@ if(isset($_POST['register']))
     	$name = $_POST['name'];
     	\Master\ConectBD\insertUser($login,$password,$name);
     }
-
 }
 
 ?>

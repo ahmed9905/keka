@@ -27,6 +27,26 @@ define('DB_NAME','master');
 		$row = mysqli_fetch_assoc($res);
 		return $row;
 	}
+	function inputUserLogin($login,$table='master_command'){
+		$mysqli = mysqli_connect(DB_HOST,DB_USER, DB_PASSWORD, DB_NAME);
+		if (mysqli_connect_errno($mysqli)) {
+    		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
+		}
+		$res = mysqli_query($mysqli,"SELECT *  FROM $table WHERE login = '$login'");
+		$row = mysqli_fetch_assoc($res);
+		return $row;
+	}
+	function inputUserId($id,$table='master_command'){
+		$mysqli = mysqli_connect(DB_HOST,DB_USER, DB_PASSWORD, DB_NAME);
+		if (mysqli_connect_errno($mysqli)) {
+    		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
+		}
+		$res = mysqli_query($mysqli,"SELECT *  FROM $table WHERE id = '$id'");
+		$row = mysqli_fetch_assoc($res);
+		return $row;
+	}
+	
+
 
 	/* Основные функции проверки */ 
 
@@ -52,6 +72,14 @@ define('DB_NAME','master');
 		if (mysqli_connect_errno($mysqli)) {
     		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
 		}
-		mysqli_query($mysqli,"INSERT INTO $table (`id`, `Login`, `Password`, `Nash`, `ip`, `Name`) VALUES (NULL, '$login', '$password', '', '0', '$name')");	
+		mysqli_query($mysqli,"INSERT INTO $table (`id`, `Login`, `Password`, `Hash`, `ip`, `Name`) VALUES (NULL, '$login', '$password', '', '0', '$name')");	
 
+	}
+	/* Основные функции редактирования */ 
+	function updateHashIp($login, $Hash, $ip , $table='master_command'){
+		$mysqli = mysqli_connect(DB_HOST,DB_USER, DB_PASSWORD, DB_NAME);
+		if (mysqli_connect_errno($mysqli)) {
+    		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
+		}
+		mysqli_query($mysqli,"UPDATE $table SET `Hash` = '$Hash', `ip` = '$ip' WHERE $table.`Login` = '$login'");
 	}
