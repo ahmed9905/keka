@@ -4,8 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c876ffa5471078c758c1d6c786a14891",
+    "content-hash": "3b067411e5757bd9a0de0b691fccc731",
     "packages": [
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "4842476c434e375f9d3182ff7b89059583aa8b27"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/4842476c434e375f9d3182ff7b89059583aa8b27",
+                "reference": "4842476c434e375f9d3182ff7b89059583aa8b27",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "bin": [
+                "bin/phpcs",
+                "bin/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2018-02-20T21:35:23+00:00"
+        },
         {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.7.0",
@@ -191,16 +242,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v5.6.12",
+            "version": "v5.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "ead901501cb8f99cec315dbd2daa320858fb646c"
+                "reference": "bf73478a3ff21192fa59cdd36ef6d8778aa2fe4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/ead901501cb8f99cec315dbd2daa320858fb646c",
-                "reference": "ead901501cb8f99cec315dbd2daa320858fb646c",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/bf73478a3ff21192fa59cdd36ef6d8778aa2fe4e",
+                "reference": "bf73478a3ff21192fa59cdd36ef6d8778aa2fe4e",
                 "shasum": ""
             },
             "require": {
@@ -237,7 +288,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2018-03-16T15:20:14+00:00"
+            "time": "2018-03-26T18:56:08+00:00"
         }
     ],
     "packages-dev": [],

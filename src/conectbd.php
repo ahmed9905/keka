@@ -24,7 +24,9 @@ define('DB_NAME','master');
     		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
 		}
 		$res = mysqli_query($mysqli,"SELECT *  FROM $table");
-		$row = mysqli_fetch_assoc($res);
+		while($result=$res->fetch_assoc()){
+			$row[] = $result;
+		}
 		return $row;
 	}
 	function inputUserLogin($login,$table='master_command'){
@@ -45,9 +47,28 @@ define('DB_NAME','master');
 		$row = mysqli_fetch_assoc($res);
 		return $row;
 	}
-	
-
-
+	function inputAllTableSource($table = 'master_source'){
+		$mysqli = mysqli_connect(DB_HOST,DB_USER, DB_PASSWORD, DB_NAME);
+		if (mysqli_connect_errno($mysqli)) {
+    		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
+		}
+		$res = mysqli_query($mysqli,"SELECT *  FROM $table");
+		while($result=$res->fetch_assoc()){
+			$row[] = $result;
+		}		
+		return $row;
+	}
+	function inputTableCodeCommand($id,$table = 'master_code_command'){
+		$mysqli = mysqli_connect(DB_HOST,DB_USER, DB_PASSWORD, DB_NAME);
+		if (mysqli_connect_errno($mysqli)) {
+    		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
+		}
+		$res = mysqli_query($mysqli,"SELECT *  FROM $table WHERE id_command = '$id'");
+		while($result=$res->fetch_assoc()){
+			$row[] = $result;
+		}		
+		return $row;
+	}
 	/* Основные функции проверки */ 
 
 	//проверка на уникальный логин
@@ -64,6 +85,19 @@ define('DB_NAME','master');
 			return 0;
 		}
 	}
+	function checkCode($code, $table='master_code'){
+		$mysqli = mysqli_connect(DB_HOST,DB_USER, DB_PASSWORD, DB_NAME);
+		if (mysqli_connect_errno($mysqli)) {
+    		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
+		}
+		$res = mysqli_query($mysqli,"SELECT * FROM $table WHERE `code` = '$code'");
+		if ($res->num_rows == 1 ){
+			$row = mysqli_fetch_assoc($res);
+			return $row;
+		}else{
+			return 0;
+		}
+	}
     
     /* Основные функции ввода */ 
 
@@ -73,6 +107,14 @@ define('DB_NAME','master');
     		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
 		}
 		mysqli_query($mysqli,"INSERT INTO $table (`id`, `Login`, `Password`, `Hash`, `ip`, `Name`) VALUES (NULL, '$login', '$password', '', '0', '$name')");	
+
+	}
+	function insertCodeCommand($id,$code,$source, $table='master_code_command'){
+		$mysqli = mysqli_connect(DB_HOST,DB_USER, DB_PASSWORD, DB_NAME);
+		if (mysqli_connect_errno($mysqli)) {
+    		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
+		}
+		mysqli_query($mysqli,"INSERT INTO $table (`id_code_command`, `id_command`, `id_code`,`id_source`) VALUES (NULL, '$id', '$code','$source')");	
 
 	}
 	/* Основные функции редактирования */ 

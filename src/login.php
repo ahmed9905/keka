@@ -1,6 +1,6 @@
 <?php
 namespace Master\login;
-require_once "src\conectbd.php";
+require_once "conectbd.php";
 function generateCode($length=6) {
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789";
     $code = "";
@@ -10,6 +10,7 @@ function generateCode($length=6) {
     }
     return $code;
 }
+
   if(isset($_POST['aut'])) {
   	$login = $_POST['login'];
   	$password = $_POST['password'];
@@ -21,9 +22,9 @@ function generateCode($length=6) {
   			$hash = md5(generateCode(10));
   			$ipuser = (string)$_SERVER['REMOTE_ADDR'];
   			\Master\Conectbd\updateHashIp($login,$hash,$ipuser);
-  			setcookie('id',$user['id'], time()+60*60*24*30);
-  			setcookie('hash',$hash, time()+60*60*24*30,null,null,null,true);
-  			header("Location: src/check.php"); 
+  			setcookie('id',$user['id'], time()+60*60*24);
+  			setcookie('hash',$hash, time()+60*60*24,null,null,null,true);
+  			header("Location: check.php"); 
   			exit();
   		}else{
   			$errLogin = "Вы ввели неправильный логин/пароль";
@@ -34,8 +35,7 @@ function generateCode($length=6) {
 
   }
   if(isset($_POST['autExit'])){
-    setcookie('id',"",time()-30*30*30*12,"/");
-    setcookie('hash',"",time()-30*30*30*12,"/");
+    setcookie('id',"",time()-30*30*30*12);
+    setcookie('hash',"",time()-30*30*30*12);
     header("Location: index.php"); 
   }
-
