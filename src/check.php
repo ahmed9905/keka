@@ -10,8 +10,8 @@
 		
 		if($user['Hash'] != $hash_user || $user['id'] != $id_user)
 		{
-			setcookie('id',"",time()-30*30*30*12,"/");
-			setcookie('hash',"",time()-30*30*30*12,"/");
+			setcookie('id',"",time()-60*60*24*12);
+			setcookie('hash',"",time()-60*60*24*12);
 			echo "что-то пошло не так";
 		}else{
 			header("Location: main.php"); 

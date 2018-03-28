@@ -14,11 +14,11 @@ require_once 'inputcode.php';
 
 	$tableAllSource = \Master\Conectbd\inputAllTableSource();// таблица наполнения
 
-	for($i=0;count($tableAllSource) >= $i;$i++)
+	for($i=0;count($tableAllSource) > $i;$i++)
 	{	
 		for($k=0;count($tableCommandCode)>=$k;$k++){
 			if($tableAllSource[$i]['id_source'] == $tableCommandCode[$k]['id_source']){
-				if($tableAllSource[$i]['source_img'] == 0){
+				if($tableAllSource[$i]['source_img'] == '0'){
 					$tableSourceText[$i] = $tableAllSource[$i]['source'];
 				}else{
 					$tableSourceImg[$i]=$tableAllSource[$i]['source_img'];
@@ -30,16 +30,19 @@ require_once 'inputcode.php';
 			{
 				continue;
 			}
-		if($tableAllSource[$i]['source_img'] == 0){
+		if($tableAllSource[$i]['source_img'] == '0'){
 		$tableSourceText[$i] = $tableAllSource[$i]['source_once'];
+					//echo "{$i} - source"."<br>";
 		}else{
+			//echo "{$i} - img"."<br>";
 			$tableSourceImg[$i]=$tableAllSource[$i]['source_img_once'];
 		}
 	}
 	//print_r($tableSourceText);
+	//print_r($tableSourceImg);
 	//print_r($tableAllSource);
 	//print_r($tableCommandCode);
-
+	//pri1nt_r($_COOKIE);
 ?>
 <!DOCTYPE>
 <html>
@@ -59,5 +62,11 @@ require_once 'inputcode.php';
 	<?for($i=0;count($tableSourceText)>=$i;$i++){?>
 	<p><?=$tableSourceText[$i]?></p>
 	<?}?>
+
+	<?
+	if(isset($tableSourceImg)){
+	foreach ($tableSourceImg as $key => $value) {?>
+	<img src="<?=$value?>" alt="">
+	<?}}?>
 </body>
 </html>

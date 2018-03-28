@@ -35,7 +35,7 @@ function generateCode($length=6) {
 
   }
   if(isset($_POST['autExit'])){
-    setcookie('id',"",time()-30*30*30*12);
-    setcookie('hash',"",time()-30*30*30*12);
+    setcookie('id',"",time()-60*60*24*100);
+    setcookie('hash',"",time()-60*60*24*100);
     header("Location: index.php"); 
   }
