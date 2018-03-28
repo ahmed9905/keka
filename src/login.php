@@ -22,20 +22,22 @@ function generateCode($length=6) {
   			$hash = md5(generateCode(10));
   			$ipuser = (string)$_SERVER['REMOTE_ADDR'];
   			\Master\Conectbd\updateHashIp($login,$hash,$ipuser);
+        if(!isset($_COOKIE['id'])){
   			setcookie('id',$user['id'], time()+60*60*24);
   			setcookie('hash',$hash, time()+60*60*24,null,null,null,true);
-  			header("Location: check.php"); 
+        }
+  			header("Location: /src/check.php"); 
   			exit();
   		}else{
   			$errLogin = "Вы ввели неправильный логин/пароль";
   		}
   	}else{
-  		$errLogin = "Не найден пользователь";
+  		$errLogin = "Вы ввели неправильный логин/пароль";
   	}
 
   }
   if(isset($_POST['autExit'])){
-    setcookie('id',"",time()-60*60*24*100);
-    setcookie('hash',"",time()-60*60*24*100);
-    header("Location: index.php"); 
+    setcookie('id',null,-1,'/');
+    setcookie('hash',null,-1,'/');
+    header("Location: /src/index.php"); 
   }

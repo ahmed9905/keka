@@ -14,7 +14,7 @@
 			setcookie('hash',"",time()-60*60*24*12);
 			echo "что-то пошло не так";
 		}else{
-			header("Location: main.php"); 
+			header("Location: /src/main.php"); 
 		}
 	}else{
 		echo "куки не работают";

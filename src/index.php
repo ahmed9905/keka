@@ -6,7 +6,10 @@ require_once 'login.php';
 //require_once 'src\register.php';
 //require_once 'src\inputcode.php';
 	if(isset($_COOKIE['id'])){
-  		header("Location: main.php"); 
+		
+		print_r($_COOKIE);
+		print_r($_POST);
+  		header("Location: /src/main.php"); 
 	}
 
 ?>
@@ -35,6 +38,11 @@ require_once 'login.php';
                 <p>Ваш пароль</p>
                 <input size="25" name="password" type="password" required">
               </div>
+              <? if(isset($errLogin)){?>
+              <div class="error">
+              	<p><?=$errLogin?></p>
+              </div>
+              <?}?>
               <div class="butt">
                      <input name ="aut" type="submit" value="Войти">
             </div>
