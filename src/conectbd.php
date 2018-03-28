@@ -114,7 +114,11 @@ define('DB_NAME','master');
 		if (mysqli_connect_errno($mysqli)) {
     		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
 		}
-		mysqli_query($mysqli,"INSERT INTO $table (`id_code_command`, `id_command`, `id_code`,`id_source`) VALUES (NULL, '$id', '$code','$source')");	
+		if($table == 'master_code_command'){
+		mysqli_query($mysqli,"INSERT INTO  $table (`id_code_command`, `id_command`, `id_code`,`id_source`) VALUES (NULL, '$id', '$code','$source')");
+		}elseif ($table == 'master_percon_command'){
+		mysqli_query($mysqli,"INSERT INTO $table (`id_percon_command`, `id_command`, `id_code`,`id_percon`) VALUES (NULL, '$id', '$code','$source')");
+		}	
 
 	}
 	/* Основные функции редактирования */ 

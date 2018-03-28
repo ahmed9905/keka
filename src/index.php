@@ -6,10 +6,7 @@ require_once 'login.php';
 //require_once 'src\register.php';
 //require_once 'src\inputcode.php';
 	if(isset($_COOKIE['id'])){
-		
-		print_r($_COOKIE);
-		print_r($_POST);
-  		header("Location: /src/main.php"); 
+  	header("Location: /src/main.php"); 
 	}
 
 ?>
