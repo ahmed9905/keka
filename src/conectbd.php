@@ -2,9 +2,9 @@
 namespace Master\Conectbd;
 
 define('DB_HOST', 'localhost');
-define('DB_USER', 'efidanvs_master');
-define('DB_PASSWORD','12345678');
-define('DB_NAME','efidanvs_master');
+define('DB_USER', 'root');
+define('DB_PASSWORD','');
+define('DB_NAME','master');
 
 
 //подключение к бд
@@ -111,15 +111,15 @@ define('DB_NAME','efidanvs_master');
 		mysqli_query($mysqli,"INSERT INTO $table (`id`, `Login`, `Password`, `Hash`, `ip`, `Name`) VALUES (NULL, '$login', '$password', '', '0', '$name')");	
 
 	}
-	function insertCodeCommand($id,$code,$source, $table='master_code_command'){
+	function insertCodeCommand($id,$code,$source,$point, $table='master_code_command'){
 		$mysqli = mysqli_connect(DB_HOST,DB_USER, DB_PASSWORD, DB_NAME);
 		if (mysqli_connect_errno($mysqli)) {
     		echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
 		}
 		if($table == 'master_code_command'){
-		mysqli_query($mysqli,"INSERT INTO  $table (`id_code_command`, `id_command`, `id_code`,`id_source`) VALUES (NULL, '$id', '$code','$source')");
+		mysqli_query($mysqli,"INSERT INTO  $table (`id_code_command`, `id_command`, `id_code`,`id_source`,`point`) VALUES (NULL, '$id', '$code','$source','$point')");
 		}elseif ($table == 'master_percon_command'){
-		mysqli_query($mysqli,"INSERT INTO $table (`id_percon_command`, `id_command`, `id_code`,`id_percon`) VALUES (NULL, '$id', '$code','$source')");
+		mysqli_query($mysqli,"INSERT INTO $table (`id_percon_command`, `id_command`, `id_code`,`id_percon`,`point`) VALUES (NULL, '$id', '$code','$source','$point')");
 		}	
 
 	}

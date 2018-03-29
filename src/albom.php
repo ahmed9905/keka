@@ -3,6 +3,10 @@ namespace Master\Albom;
 require_once "conectbd.php";
 require_once "inputcode.php";
 
+
+if(!isset($_COOKIE['id'])){
+      header("Location: index.php"); 
+  }
 // + img
   $tableAlbomCommand = 'master_percon_command';
   $tableAlbom = 'master_percon';
@@ -80,6 +84,8 @@ require_once "inputcode.php";
   <img src="<?=$value?>" alt="">
 </div>
   <?}}?>
+
+  
 </div>
 </div>
 </body>

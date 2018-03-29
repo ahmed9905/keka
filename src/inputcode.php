@@ -11,10 +11,10 @@ require_once "conectbd.php";
 			if($mass_code['id_person'] > '0'){
 				$table = 'master_percon_command';
 				$id_source = $mass_code['id_person'];
-				\Master\Conectbd\insertCodeCommand($_COOKIE['id'],$mass_code['id_code'],$id_source,$table);
+				\Master\Conectbd\insertCodeCommand($_COOKIE['id'],$mass_code['id_code'],$id_source,$mass_code['point'],$table);
 			}elseif($mass_code['id_source'] > '0'){
 				$id_source = $mass_code['id_source'];
-				\Master\Conectbd\insertCodeCommand($_COOKIE['id'],$mass_code['id_code'],$id_source);
+				\Master\Conectbd\insertCodeCommand($_COOKIE['id'],$mass_code['id_code'],$id_source,$mass_code['point']);
 			}
 			header("Location: {$page}"); 
 		}else{
