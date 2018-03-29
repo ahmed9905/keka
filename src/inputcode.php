@@ -2,6 +2,7 @@
 namespace Master\Inputcode;
 require_once "conectbd.php";
 	$page = $_SERVER['REQUEST_URI'];
+	$errCode = "Введите код";
 	if(isset($_POST['inputcode']))
 	{
 		$code = $_POST['code'];

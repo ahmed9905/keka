@@ -2,9 +2,9 @@
 namespace Master\Conectbd;
 
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASSWORD','');
-define('DB_NAME','master');
+define('DB_USER', 'efidanvs_master');
+define('DB_PASSWORD','12345678');
+define('DB_NAME','efidanvs_master');
 
 
 //подключение к бд
@@ -69,6 +69,8 @@ define('DB_NAME','master');
 		}		
 		return $row;
 	}
+
+
 	/* Основные функции проверки */ 
 
 	//проверка на уникальный логин

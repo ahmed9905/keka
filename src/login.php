@@ -23,8 +23,8 @@ function generateCode($length=6) {
   			$ipuser = (string)$_SERVER['REMOTE_ADDR'];
   			\Master\Conectbd\updateHashIp($login,$hash,$ipuser);
         if(!isset($_COOKIE['id'])){
-  			setcookie('id',$user['id'], time()+60*60*24);
-  			setcookie('hash',$hash, time()+60*60*24,null,null,null,true);
+  			setcookie('id',$user['id'], time()+60*60*24,'/');
+  			setcookie('hash',$hash, time()+60*60*24, '/');
         }
   			header("Location: /src/check.php"); 
   			exit();
@@ -36,7 +36,7 @@ function generateCode($length=6) {
   	}
 
   }
-  if(isset($_POST['autExit'])){
+  if(isset($_GET['autExit'])){
     setcookie('id',null,-1,'/');
     setcookie('hash',null,-1,'/');
     header("Location: /src/index.php"); 
