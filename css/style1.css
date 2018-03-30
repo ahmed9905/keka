@@ -448,3 +448,16 @@ background: white;
 		font-size: 2em;
 	}
 }
+
+.civ{
+    text-align: center;
+     font-size: 1.4 em;
+     font-weight: 600;
+}
+.civ a{
+         color: black;
+}
+.civ strong{
+    font-size: 1.5em;
+}
+

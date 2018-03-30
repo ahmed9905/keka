@@ -1,7 +1,7 @@
 <?php
 namespace Master\Register;
 
-require_once "src\conectbd.php";
+require_once "conectbd.php";
 if(isset($_POST['register']))
 {
 	$err=[];

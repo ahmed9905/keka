@@ -1,7 +1,6 @@
 <?php
 namespace Master;
-session_start();
-require_once "conectbd.php";
+
 require_once 'login.php';
 //require_once 'src\register.php';
 //require_once 'src\inputcode.php';

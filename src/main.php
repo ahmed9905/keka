@@ -1,6 +1,5 @@
 <?php
 namespace Master\Main;
-session_start();
 require_once "conectbd.php";
 require_once 'login.php';
 //require_once 'register.php';
@@ -9,26 +8,19 @@ require_once 'inputcode.php';
   		header("Location: index.php"); 
 	}
 
+/*
+  $code123=\Master\Conectbd\inputTableCode1();
+  foreach ($code123 as $key => $value) {
+      if($value['id_source']>0){
+      echo "{$key}.Код = {$value['code']} pint = {$value['point']}<br> ";
+    }else{
+      echo "{$key}.Код персов = {$value['code']} <br> ";
+    }
+  }
+  */
 	// текст + img
-	$tableCommandCode = \Master\Conectbd\inputTableCodeCommand($_COOKIE['id']);
-	$tableCommand = \Master\Conectbd\inputUserId($_COOKIE['id']);
-	$tableAllSource = \Master\Conectbd\inputAllTableSource();// таблица наполнения
-	for($i=0;count($tableAllSource) > $i;$i++)
-	{	
-		for($k=0;count($tableCommandCode)>=$k;$k++){
-			if($tableAllSource[$i]['id_source'] == $tableCommandCode[$k]['id_source']){
-					$tableSource[$i] = $tableAllSource[$i]['source_img'];
-			}
-		}
-		if(isset($tableSource[$i]))
-			{
-				continue;
-			}
-		
-		$tableSourceText[$i] = $tableAllSource[$i]['source_img_once'];
-	}
-	//print_r($tableSourceText);
-	//print_r($tableSourceImg);
+	require_once 'page.php';
+	//print_r($tableSource);
 	//print_r($tableAllSource);
 	//print_r($tableCommandCode);
 	//pri1nt_r($_COOKIE);
@@ -71,18 +63,54 @@ require_once 'inputcode.php';
     </div>
 <div class="body-main">
       <div class="row">
-
+      
       <div class="col-6  polar pravo cvet">
-        <img src="/img/578330062e97f155d873982f.png" alt="">
+        <img src="<?=$tableSource['0']?>" alt="">
       </div>
 
 
       <div class="col-6 cvet buma">
-        <img src="/img/bumag228.png" alt="">
+        <img src="<?=$tableSource['1']?>" alt="">
+      </div>
+
+       <div class="col-6  polar pravo cvet">
+        <img src="<?=$tableSource['2']?>" alt="">
+      </div>
+
+
+      <div class="col-6 cvet buma">
+        <img src="<?=$tableSource['3']?>" alt="">
+      </div>
+       <div class="col-6  polar pravo cvet">
+        <img src="<?=$tableSource['4']?>" alt="">
+      </div>
+
+
+      <div class="col-6 cvet buma">
+        <img src="<?=$tableSource['5']?>" alt="">
+      </div>
+       <div class="col-6  polar pravo cvet">
+        <img src="<?=$tableSource['6']?>" alt="">
+      </div>
+
+
+      <div class="col-6 cvet buma">
+        <img src="<?=$tableSource['7']?>" alt="">
       </div>
 
     </div>
+    
+    <div class="civ">-
+    <?for($i_page=0;$i_page<$kol_page;$i_page++):?>
+      <?if($i_page==$page_n):?>
+        <strong>Стр.
+      <?endif?>
+          <a href="main.php?page=<?=$i_page?>"><?=$i_page+1?></a>
+      <?if($i_page==$page_n):?>
+        </strong>
+      <?endif?>
+    <?endfor;?>-
+  </div>
     </div>
-
 </body>
 </html>
