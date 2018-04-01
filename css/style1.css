@@ -3,6 +3,7 @@ html {height: 100%;}
 body {
 	height: 100%;
 	width: 100%;
+    background: url(../img/old-paper-642132_1920.jpg) center center;
  }
 
  @charset "UTF-8";
@@ -451,7 +452,7 @@ background: white;
 
 .civ{
     text-align: center;
-     font-size: 1.4 em;
+     font-size: 1.4em;
      font-weight: 600;
 }
 .civ a{
@@ -461,3 +462,50 @@ background: white;
     font-size: 1.5em;
 }
 
+
+.okno{
+    width: 300px;
+    height: 420px;
+    margin: 0 auto;
+    position: fixed;
+    z-index: 222001;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url(../img/paper_sheet_PNG7244.png);
+      background-size: 100%;
+      text-align: center;
+      padding-top: 130px;
+      font-size: 1.5em;
+    }
+
+    
+
+    .exit1{
+        margin-top: 37px;
+    }
+.pereh a{
+        color: black;
+        border: 1px solid black;
+        background: white;
+        padding: 6px;
+    }
+    .exit1 a{
+        
+        color: black;
+        border: 1px solid black;
+        background: white;
+        padding: 6px;
+    }
+    .pereh{
+        margin-top: 25px;
+    }
+
+.t{
+      -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  transform: rotate(2deg); 
+}

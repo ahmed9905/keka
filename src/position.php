@@ -73,6 +73,7 @@ echo "Количество очков: {$countAllPoint} ";
     
   </head>
   <body>
+    <?require_once 'okno.php';?>
 <input type="checkbox" id="nav-toggle" hidden>
 
     <nav class="nav">

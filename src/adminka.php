@@ -4,13 +4,18 @@ require_once "conectbd.php";
 require_once 'login.php';
 //require_once 'register.php';
 require_once 'inputcode.php';
-$tableAllCodeCommand = \Master\Conectbd\inputTableLimit('master_code_command');
+require_once 'register.php';
+$tableAllCodeCommand = \Master\Conectbd\inputTableLimitSort('master_code_command');
 $tableCommand = \Master\Conectbd\inputTable();
 $tableCommandId = \Master\Conectbd\inputUserId($_COOKIE['id']);
 $tablePosition = [];
 $countCommand = count($tableCommand);
 $tableCode = \Master\Conectbd\inputTableCode('master_code');
 $countAllPoint =0;
+$tableAllPerconCommand = \Master\Conectbd\inputTableLimitSort('master_percon_command');
+  	$countAllPerconCommand = count($tableAllPerconCommand);
+    $countAllCodeCommand = count($tableAllCodeCommand);
+
 
 for ($i=0; $i < count($tableCode);$i++) { 
 		$countAllPoint += $tableCode[$i]['point'];
@@ -48,6 +53,17 @@ for ($i=0; $i < $countTablePosition-1; $i++) {
 		break;
 	}
 }
+  if (isset($_GET['slom'])) {
+      \Master\Conectbd\insertSlom($_GET['timeslom']);
+      header("Location: adminka.php"); 
+  }
+  if (isset($_GET['slomEnd'])) {
+      \Master\Conectbd\DeleteSlom();
+      header("Location: adminka.php"); 
+  }
+   if (isset($POST['restart'])) {
+      header("Location: adminka.php"); 
+  }
 //date_default_timezone_set("UTC"); 
 //echo $_SERVER['REQUEST_TIME'];
 /*
@@ -60,9 +76,7 @@ for ($i=0; $i < $countTablePosition-1; $i++) {
     }
   }
   */
-  	$tableAllPerconCommand = \Master\Conectbd\inputTableLimit('master_percon_command');
-  	$countAllPerconCommand = count($tableAllPerconCommand);
-    $countAllCodeCommand = count($tableAllCodeCommand);
+  	
 	// текст + img
 	//require_once 'page.php';
 	//print_r($tableCode);
@@ -90,11 +104,15 @@ for ($i=0; $i < $countTablePosition-1; $i++) {
 	<div class="sidebar">
       <div class="name-team">Админка</div><br>
       <div class="kod">
+        <form action="" method="POST">
+         <input type="submit" name = "restart" value="Обновить страницу">
+       </form>
         <?//require_once 'input.php';?>
       </div>
     </div>
 
 <div class="body-main">
+  <?/*?>
 	<p>Таблица открытых персонажей</p>
       <div class="row">
     <table border="1"  width="70%" cellpadding="5">
@@ -208,7 +226,34 @@ for ($i=0; $i < $countTablePosition-1; $i++) {
 		<?endfor?>
         </table>
 	</div>
-	<p>Рейтинг</p>
+<?*/?>
+<?if(\Master\Conectbd\checkSlom()){?>
+<?$timeSlom=\Master\Conectbd\inputCheckSlom();?>
+      <div class="t">
+         <h3>СЛОМ В <?=$timeSlom?></h3>
+      </div>
+  
+<?}else{?>
+  <h3>Слома пока нет</h3>
+<?}?>
+<form action="" method="GET">
+  <input type="time" name="timeslom">
+  <input type="submit" name="slom" value="ЕБАНЫЙ СЛОМ">
+</form>
+<br>
+<form action="" method="GET">
+  <input type="submit" name="slomEnd" value="Вырубить ЕБАНЫЙ СЛОМ">
+</form>
+<br>
+<h3>Регистрация команд</h3>
+<form action="" method="POST">
+  <input type="text" name="name" placeholder="Имя команды"><br>
+  <input type="text" name="login" placeholder="Логин"><br>
+  <input type="password" name="password" placeholder="Пароль"><br>
+  <input type="submit" name = "register" value="Зарегистрировать">
+</form>
+<br>
+	<h3><p>Рейтинг</p></h3>
 	<div class="row">
 
         <table border="1"  width="70%" cellpadding="5">

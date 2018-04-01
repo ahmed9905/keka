@@ -39,6 +39,10 @@ require_once 'inputcode.php';
     
   </head>
   <body>
+
+<?require_once 'okno.php';?>
+
+
 <input type="checkbox" id="nav-toggle" hidden>
 
     <nav class="nav">

@@ -61,3 +61,9 @@ table p{
 th{
 	font-size: 1.2em;
 }
+.points1{
+	width: 30px;
+}
+.points1 img{
+	width: 150%;
+}

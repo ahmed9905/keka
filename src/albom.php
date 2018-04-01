@@ -53,6 +53,7 @@ if(!isset($_COOKIE['id'])){
     <link rel="stylesheet" href="/css/bootstrap.css">
   </head>
   <body>
+    <?require_once 'okno.php';?>
   <input type="checkbox" id="nav-toggle" hidden>
 
     <nav class="nav">
