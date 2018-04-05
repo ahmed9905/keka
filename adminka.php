@@ -121,7 +121,7 @@ for ($i=0; $i < $countTablePosition-1; $i++) {
     </div>
 
 <div class="body-main">
-  <?/*?>
+  <??>
 	<p>Таблица открытых персонажей</p>
       <div class="row">
     <table border="1"  width="70%" cellpadding="5">
@@ -157,7 +157,7 @@ for ($i=0; $i < $countTablePosition-1; $i++) {
               </div>
             </td>
             <td>
-              <div class="points">
+              <div class="points1">
                 <p>
                   <img src="<?=$tableSourceId['img_percon']?>" alt="">
                 </p>
@@ -211,7 +211,7 @@ for ($i=0; $i < $countTablePosition-1; $i++) {
               </div>
             </td>
             <td>
-              <div class="points">
+              <div class="points1">
                 <p>
                   <img src="<?=$tableSourceId['source_img']?>" alt="">
                 </p>
@@ -235,7 +235,7 @@ for ($i=0; $i < $countTablePosition-1; $i++) {
 		<?endfor?>
         </table>
 	</div>
-<?*/?>
+<??>
 <h3>Настройка слома</h3>
 <br>
 <?if(\Master\Conectbd\checkSlom()){?>

@@ -1,6 +1,43 @@
 <?php
 namespace Master;
+  
+   function getIn($data,$put)
+{ 
+    if(count($data) == 0 || count($put)==0)
+    {
+        return null;
+    }
+    $result = $data;
+    foreach($put as $value)
+    {
+        if(array_key_exists($value,$result)){
+            $result = $result[$value];
+        }else{
+            $result = null;
+            return $result;
+        }
+    }
+    return $result;
+}
+$data = [
+            'user' => 'ubuntu',
+            'hosts' => [
+                ['name' => 'web1'],
+                ['name' => 'web2']
+            ]
+        ];
+echo getIn($data, ['undefined']);
+/*
+*1) 2 указателя для каждого из массивов, нач знач 0;
+*2) проверка элементов под индексом в обоих массивах
+*3) если совпадают то знач заносится в результ массив и оба индкса ++
+*4) если знач 1массзнач > 2массзнас то индекс2масс ++ иначе индекс1масс++
+*/
 
+//print_r(getIntersectionOfSortedArray([10, 11, 24], [10, 13, 14, 18, 24, 30]));
+
+//    echo countUniqChars('Fear cuts deeper than swords.');
+/*
 require_once 'login.php';
 //require_once 'src\register.php';
 //require_once 'src\inputcode.php';
@@ -48,3 +85,4 @@ require_once 'login.php';
 </body>
 </html>
 
+*/

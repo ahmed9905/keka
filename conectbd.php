@@ -2,9 +2,9 @@
 namespace Master\Conectbd;
 
 define('DB_HOST', 'localhost'); 
-define('DB_USER', 'u0398_ralt'); 
-define('DB_PASSWORD','fVt6@4t4'); 
-define('DB_NAME','u0398885_mh');
+define('DB_USER', 'root'); 
+define('DB_PASSWORD',''); 
+define('DB_NAME','master');
 
 //подключение к бд
 	function conectBD(){
